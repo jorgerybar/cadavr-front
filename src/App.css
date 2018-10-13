@@ -1,32 +1,71 @@
-.App {
-  text-align: center;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* font-family: 'Inconsolata', sans-serif; */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.cadav {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  width:auto;
+  max-width: 400px;
+  min-width: 200px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cadav-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#cadav-input {
+  width: 100%; /*300px son 40 char*/
+  font-size: 20px;
+  border: 0;
+  background-color: blanchedalmond;
+  height: 40px;
+}
+#cadav-input:focus{
+  outline-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cadav-btn {
+  width: 40%;
+  height: 40px;
+  font-size: 20px;
+  background-color:blanchedalmond;
+  margin: 0 auto;
+}
+.cadav-line {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.cadav-line-txt {
+  word-break: break-all;
+  font-size: 15px;
+}
+.cadav-line-writer {
+  color: grey;
+  min-width: 60px;
+  font-size: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+@media (max-width:300px) {
+
+  #cadav-input {
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+  .cadav-btn {
+    width: 100%;
   }
-}
+} 
