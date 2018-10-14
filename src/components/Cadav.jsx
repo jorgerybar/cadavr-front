@@ -1,38 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+//import axios from 'axios'
 
-const testLines = [
-  'Alla en el fondo del mar había un castido encantado',
-  'En el castillo había una princesa llamada telma',
-  'A Telma le gustaba escaparse y subirse a los árboles. Un día ',
-  'Telma se subió a una palmera y conocío a un mono llamado Emilio',
-  'Emilio quería casarse con Telma pero Telma le dijo que no podía por que el no era humano',
-  'Telma se bajó del arbol y fue a una choza. y Ahí conocio a Moisés',
-  'Telma y Moisés se casaron y tuvieron un lindo matrimonio. '
-]
-
-const testNames = ['Tom', 'Johnny', 'Silv124', 'DJ', 'Diane', 'Pedrooo','AllanBoy']
+const url = 'http://localhost:3000/'
 
 class Cadav extends Component {
 
   state = {
     title: 'Flowerpot',
     reveal: false,
-    lines: []
+    lines: [],
+    url: null
   }
 
-  //FOR TESTING PURPOSES ONLY
   componentWillMount(){
-    const {lines} = this.state
-    for (var i = 0; i < 7; i++)
-      lines.push({text: testLines[i], color: this.randomColor(), owner: testNames[i] })
-    console.log('mounting')
-    console.log(lines)
-
-    this.setState({lines})
-    localStorage.setItem('user', 'jorge')
+    const {lines, title, url} = this.props.data
+    this.setState({lines, title, url})
+    console.log(this.state)
   }
 
-  //WHEN NEW LINE IS SUBMITTED
   onSubmit = (e) => {
     e.preventDefault()
     const {lines} = this.state
@@ -40,6 +25,9 @@ class Cadav extends Component {
     lines.push({text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  })
     //update the state and reveal
     this.setState({lines, reveal: true})
+    // axios.post(url,lines)
+    // .then((r)=>{this.setState{lines,reveal:true}})
+    // .catch((e)=>{console.log(e)})
   }
 
   //CHOOSE A RANDOM COLOR FOR LINE
@@ -67,12 +55,13 @@ class Cadav extends Component {
      <div>
       <h1 className="cadav-title">{title}</h1>
       {lines.map((l,i)=>this.drawLine(l, i))}
+      <div className="sharethis-inline-share-buttons"></div>
       </div>
    )
    else 
     return (
       <div>
-      <h1 className="cadav-title">New cadav</h1>
+      <h1 className="cadav-title">{title}</h1>
       {console.log(lines)}
       {this.drawLine(lines[lines.length-1])}
       <form className="cadav-form" onSubmit={this.onSubmit}>
