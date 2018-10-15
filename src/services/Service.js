@@ -1,6 +1,6 @@
-//import axios from 'axios'
+import axios from 'axios'
 
-const url = 'http://localhost/3000/'
+const url = 'http://localhost:3001/'
 
 const testCadav = {
   lines: [
@@ -13,15 +13,18 @@ const testCadav = {
   {text: 'Telma y Moisés se casaron y tuvieron un lindo matrimonio. ', color: 'blue', owner: 'AllanBoy'},
 ],
   title: 'Flowerpot',
-  url: url + 'flowerpot'
+  urlEnd: url + 'flowerpot'
 }
 
 export const getCadavData = (name) => {
-  // return axios.get(url + name)
-  // .then(res=>{
-  //     return res.data
-  // })
-  // .catch(e=>e)
+  console.log('using getCadavData service')
+  return axios.get(url + name)
+  .then(res=>{
+      console.log('Got Some sort of response')
+      console.log(res.data[0])
+      return res.data[0]
+  })
+  .catch(e=>e)
 
-  return testCadav;
+ // return testCadav;
 }

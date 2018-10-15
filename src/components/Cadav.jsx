@@ -1,33 +1,31 @@
 import React, { Component } from 'react'
-//import axios from 'axios'
-
-const url = 'http://localhost:3000/'
+import axios from 'axios'
 
 class Cadav extends Component {
 
   state = {
     title: 'Flowerpot',
     reveal: false,
-    lines: [],
-    url: null
+    lines: [{text:'Loading', color: 'blue', owner: 'tom'}],
+    urlEnd: null
   }
 
-  componentWillMount(){
-    const {lines, title, url} = this.props.data
-    this.setState({lines, title, url})
-    console.log(this.state)
+  componentDidMount(){
+    const {lines, title, urlEnd} = this.props.data
+    this.setState({lines, title, urlEnd})
   }
 
   onSubmit = (e) => {
     e.preventDefault()
-    const {lines} = this.state
-    //add the line to the list
-    lines.push({text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  })
-    //update the state and reveal
-    this.setState({lines, reveal: true})
-    // axios.post(url,lines)
-    // .then((r)=>{this.setState{lines,reveal:true}})
-    // .catch((e)=>{console.log(e)})
+    // const {lines} = this.state
+    // //add the line to the list
+    // lines.push({text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  })
+    // //update the state and reveal
+    // this.setState({lines, reveal: true})
+    const newLine = {text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  }
+    axios.post(this.props.data.urlEnd,newLine)
+    .then((r)=>{this.setState({reveal:true})})
+    .catch((e)=>{console.log(e)})
   }
 
   //CHOOSE A RANDOM COLOR FOR LINE
@@ -48,7 +46,10 @@ class Cadav extends Component {
 
   //REVEAL LINES AFTER USER CONTRIBUTES
  checkReveal  = () =>{
-  const {title, lines, reveal} = this.state
+  const {title, lines, reveal} = this.props.data
+  if(!title || !lines)
+    return;
+
 
   if (reveal)
    return (
@@ -74,6 +75,9 @@ class Cadav extends Component {
  }
 
   render() {
+
+    console.log('Render Cadav Title ' + this.state.title)
+
     return (
       <div className="cadav">
         {this.checkReveal()}

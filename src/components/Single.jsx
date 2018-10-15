@@ -10,18 +10,20 @@ class Single extends Component{
 
   componentWillMount(){
     const {name} = this.props.match.params
-    let data = getCadavData(name)
-    this.setState({data})
+    // let data = getCadavData(name)
+    // this.setState({data})
 
-    // getCadavData(id) //esto es un servicio
-    // .then(data=>{
-    //     this.setState({data})
-    // })
-    // .catch(e=>console.log(e))
+    getCadavData(name) //esto es un servicio
+    .then(data=>{
+        this.setState({data})
+        console.log('Got Data from Axios' + this.state.data.title)
+    })
+    .catch(e=>console.log(e))
   }
 
   render(){
     const {data} = this.state
+    console.log(' Render Single Data' + data.title)
     return(
       <div>
         <Cadav data={data}/>
