@@ -6,7 +6,7 @@ class Cadav extends Component {
   state = {
     title: 'Flowerpot',
     reveal: false,
-    lines: [{text:'Loading', color: 'blue', owner: 'tom'}],
+    newlines: [],
     urlEnd: null
   }
 
@@ -17,15 +17,15 @@ class Cadav extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
-    // const {lines} = this.state
+     const {newlines} = this.state
     // //add the line to the list
-    // lines.push({text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  })
+      newlines.push({text: e.target.childNodes[0].value, color: this.randomColor(), writer: 'Jorge'  })
     // //update the state and reveal
-    // this.setState({lines, reveal: true})
-    const newLine = {text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  }
-    axios.post(this.props.data.urlEnd,newLine)
-    .then((r)=>{this.setState({reveal:true})})
-    .catch((e)=>{console.log(e)})
+   // const newLine = {text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  }
+    this.setState({reveal: true, newlines})
+    //axios.post(this.props.data.urlEnd,newLine)
+    // .then((r)=>{this.setState({reveal:true})})
+    // .catch((e)=>{console.log(e)})
   }
 
   //CHOOSE A RANDOM COLOR FOR LINE
@@ -37,7 +37,7 @@ class Cadav extends Component {
   drawLine = (l,i) => {
     return (
     <div className="cadav-line" key={i}>
-        <p className="cadav-line-writer">{l.owner}</p>
+        <p className="cadav-line-writer">{l.writer}</p>
         <span style={{color: l.color}} className="cadav-line-txt">
             {l.text}
         </span>
@@ -46,9 +46,13 @@ class Cadav extends Component {
 
   //REVEAL LINES AFTER USER CONTRIBUTES
  checkReveal  = () =>{
-  const {title, lines, reveal} = this.props.data
+  const {title, lines} = this.props.data
+  const reveal = this.state.reveal
+
   if(!title || !lines)
     return;
+
+  lines.push(...this.state.newlines)
 
 
   if (reveal)

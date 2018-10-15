@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Cadav from './Cadav'
-import {getCadavData} from '../services/Service'
+import {getCadavs} from '../services/Service'
 
 
  class List extends Component {
@@ -12,7 +12,7 @@ import {getCadavData} from '../services/Service'
 
   componentWillMount(){
     const {name} = this.props.match.params
-    let data = getCadavData(name)
+    let data = getCadavs(name)
     this.setState({data})
 
     // getCadavData(id) //esto es un servicio

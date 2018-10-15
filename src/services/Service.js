@@ -4,16 +4,16 @@ const url = 'http://localhost:3001/'
 
 const testCadav = {
   lines: [
-  {text: 'Alla en el fondo del mar había un castido encantado', color: 'blue', owner: 'Tom'},
-  {text: 'En el castillo había una princesa llamada telma',color: 'red', owner: 'Jonnny'},
-  {text: 'A Telma le gustaba escaparse y subirse a los árboles. Un día ',color: 'blue', owner: 'Silv123'},
-  {text: 'Telma se subió a una palmera y conocío a un mono llamado Emilio',color: 'red', owner: 'DJ'},
-  {text: 'Emilio quería casarse con Telma pero Telma le dijo que no podía por que el no era humano',color: 'Diane', owner: 'Tom'},
-  {text: 'Telma se bajó del arbol y fue a una choza. y Ahí conocio a Moisés',color: 'red', owner: 'Pedrooo'},
-  {text: 'Telma y Moisés se casaron y tuvieron un lindo matrimonio. ', color: 'blue', owner: 'AllanBoy'},
+  {text: 'Alla en el fondo del mar había un castido encantado', color: '#ef2e60', writer: 'Tom'},
+  {text: 'En el castillo había una princesa llamada Rita',color: '#fdc847', writer: 'Jonnny'},
+  {text: 'A Rita le gustaba escaparse y subirse a los árboles. Un día ',color: '#36b980', writer: 'Silv123'},
+  {text: 'Rita se subió a una palmera y conocío a un mono llamado Emilio',color: '#ee4d30', writer: 'DJ'},
+  {text: 'Emilio quería casarse con Rita pero Rita le dijo que no podía por que el no era humano',color: 'Diane', writer: 'Tom'},
+  {text: 'Rita se bajó del arbol y fue a una choza. y Ahí conocio a Pepe',color: '#531a4b', writer: 'Pedrooo'},
+  {text: 'Rita y Pepe se casaron y tuvieron un lindo hijo que parecia sapo. ', color: '#981f26', writer: 'AllanBoy'},
 ],
-  title: 'Flowerpot',
-  urlEnd: url + 'flowerpot'
+  title: 'El Sapo Guzman',
+  urlEnd: url + 'sapo'
 }
 
 export const getCadavData = (name) => {
@@ -27,4 +27,8 @@ export const getCadavData = (name) => {
   .catch(e=>e)
 
  // return testCadav;
+}
+
+export const getCadavs = (name) => {
+ return testCadav;
 }
