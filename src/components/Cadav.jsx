@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {addLine} from '../services/Service'
+
 
 class Cadav extends Component {
 
@@ -19,19 +21,30 @@ class Cadav extends Component {
     e.preventDefault()
      const {newlines} = this.state
     // //add the line to the list
-      newlines.push({text: e.target.childNodes[0].value, color: this.randomColor(), writer: 'Jorge'  })
+    const newLine = {text: e.target.childNodes[1].value, 
+                    color: this.randomColor(), 
+                    writer:  e.target.childNodes[0].value }
+    newlines.push(newLine)
     // //update the state and reveal
-   // const newLine = {text: e.target.childNodes[0].value, color: this.randomColor(), owner: 'Jorge'  }
     this.setState({reveal: true, newlines})
-    //axios.post(this.props.data.urlEnd,newLine)
-    // .then((r)=>{this.setState({reveal:true})})
-    // .catch((e)=>{console.log(e)})
+    addLine(this.props.data.urlEnd,newLine)
+     .then((r)=>{console.log('Post Successful' + r)})
+     .catch((e)=>{console.log(e)})
   }
 
   //CHOOSE A RANDOM COLOR FOR LINE
   randomColor = () =>{
-    var o = Math.round, r = Math.random, s = 150;
-    return 'rgba(' + o(r()*s*2 ) + ',' + o(r()*s ) + ',' + o(r()*s) + ',' + 1 + ')';
+    var colors = [
+    '#ef2e60',
+    '#fdc847',
+    '#36b980',
+    '#ee4d30',
+    '#531a4b',
+    '#981f26']
+
+    var o = Math.round, r = Math.random
+    return colors[o(r()*6)]
+    // return 'rgba(' + o(r()*s*2 ) + ',' + o(r()*s ) + ',' + o(r()*s) + ',' + 1 + ')';
   }
 
   drawLine = (l,i) => {
@@ -57,10 +70,11 @@ class Cadav extends Component {
 
   if (reveal)
    return (
-     <div>
+     <div >
       <h1 className="cadav-title">{title}</h1>
       {lines.map((l,i)=>this.drawLine(l, i))}
       <div className="sharethis-inline-share-buttons"></div>
+      <img className="cadav-share" width='100px' src="buttons.png" alt=""/>
       </div>
    )
    else 
@@ -70,7 +84,8 @@ class Cadav extends Component {
       {console.log(lines)}
       {this.drawLine(lines[lines.length-1])}
       <form className="cadav-form" onSubmit={this.onSubmit}>
-        <input id="cadav-input" maxLength="200" placeholder='add your line' type="text"/>
+      <input id="cadav-input-writer" maxLength="10" placeholder='Mi nombre es..' type="text"/>
+        <input id="cadav-input-line" maxLength="200" placeholder='Mi linea genial' type="text"/>
         <input className="cadav-btn" type="submit" value="Add"/>
       </form>
       </div>

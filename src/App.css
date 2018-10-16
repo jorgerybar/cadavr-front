@@ -1,8 +1,14 @@
 
+
+@font-face { font-family: MyFont; src: url('fonts/Tomatoes.ttf'); } 
+
 * {
   margin: 0;
   padding: 0;
+  font-family: Arial;
+
 }
+
 .list {
   display: flex;
   flex-direction: row;
@@ -24,15 +30,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
-#cadav-input {
+.new-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+#cadav-input-line {
   width: 100%; /*300px son 40 char*/
   font-size: 20px;
   border: 0;
-  background-color: blanchedalmond;
+  background-color: white;
   height: 40px;
 }
-#cadav-input:focus{
+#cadav-input-writer {
+  width: 40%; /*300px son 40 char*/
+  font-size: 10px;
+  border: 0;
+  background-color: white;
+  height: 25px;
+}
+.cadav input:focus{
   outline-color: white;
 }
 
@@ -40,7 +60,7 @@
   width: 40%;
   height: 40px;
   font-size: 20px;
-  background-color:blanchedalmond;
+  background-color:#cbffb1;
   margin: 0 auto;
 }
 .cadav-line {
@@ -58,6 +78,14 @@
   min-width: 60px;
   font-size: 10px;
 }
+.cadav-share {
+  margin: 0 auto;
+  width: 100px;
+}
+.cadav-title {
+  font-family: Arial;
+  text-align: center;
+}
 
 
 @media (max-width:300px) {
@@ -69,3 +97,28 @@
     width: 100%;
   }
 } 
+
+@keyframes wiggleanimation{
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  20% {
+    -webkit-transform: rotate(2deg);
+  }
+  40% {
+    -webkit-transform: rotate(0deg);
+  }
+  60% {
+    -webkit-transform: rotate(-2deg);
+  }
+  80% {
+    -webkit-transform: rotate(0deg);
+  }
+  100%{
+    border-radius: 0px;
+  }
+}
+
+.cadav:hover{
+      animation: wiggleanimation 1s linear 0.3s;
+    }

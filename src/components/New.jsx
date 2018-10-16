@@ -15,7 +15,7 @@ class New extends Component {
     axios.post(url, newCadav )
       .then((cadav)=>{
         console.log(cadav.urlEnd)
-        //this.props.history.push('/')
+        this.props.history.push(newCadav.title) //fix this hack with cadav.urlEnd
         })
       .catch((e)=>{console.log(e)})
   }
@@ -32,11 +32,11 @@ class New extends Component {
   render(){
     return(
       <div>
-        <form onSubmit = {this.onSubmit}>
-          <input onChange = {this.onChange} placeholder="Cadav Name" name="title" type="text"/>
-          <input onChange = {this.onChange} placeholder="Cadav Text" name="text" type="text"/>
-          <input onChange = {this.onChange} placeholder="Writer" name="writer" type="text"/>
-          <input type="submit" value="Create New cadav"/>
+        <form className='new-form' onSubmit = {this.onSubmit}>
+          <input onChange = {this.onChange} placeholder="Nombre del Cadaver" name="title" type="text"/>
+          <input onChange = {this.onChange} placeholder="Primera linea" name="text" type="text"/>
+          <input onChange = {this.onChange} placeholder="Escritor" name="writer" type="text"/>
+          <input type="submit" value="Crear Nuevo"/>
         </form>
       </div>
     )
