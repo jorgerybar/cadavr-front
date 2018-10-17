@@ -3,7 +3,7 @@ import {Input, Button} from 'antd'
 import axios from 'axios'
 import toastr from 'toastr'
 
-const url = 'http://localhost:3001/login'
+const url = 'http://localhost:3001/auth/login'
 
 class Login extends Component{
 

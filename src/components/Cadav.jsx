@@ -86,7 +86,7 @@ class Cadav extends Component {
       <form className="cadav-form" onSubmit={this.onSubmit}>
       <input id="cadav-input-writer" maxLength="10" placeholder='Mi nombre es..' type="text"/>
         <input id="cadav-input-line" maxLength="200" placeholder='Mi linea genial' type="text"/>
-        <input className="cadav-btn" type="submit" value="Add"/>
+        <input className="cadav-btn" type="submit" value="Agregar"/>
       </form>
       </div>
     )

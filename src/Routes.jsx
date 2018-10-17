@@ -5,10 +5,13 @@ import Single from './components/Single'
 import New from './components/New'
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import Home from './components/Home';
+
 
 const Routes=()=>{
   return (
     <Switch>
+      <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />      
       <Route exact path="/new" component={New} />

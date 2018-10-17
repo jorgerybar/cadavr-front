@@ -3,6 +3,7 @@ import { Input, Button } from 'antd'
 import toastr from 'toastr'
 import axios from 'axios'
 
+
 class Signup extends Component{
 
     state = {
@@ -24,7 +25,8 @@ class Signup extends Component{
         if(signup.password !== signup.password2) {
             return toastr.error('Escribe bien hijo!')
         }
-        axios.post('http://localhost:3001/signup', signup)
+
+        axios.post('http://localhost:3001/auth/signup', signup)
         .then(user=>{
             console.log(user)
             toastr.success("hey! lo lograte!")

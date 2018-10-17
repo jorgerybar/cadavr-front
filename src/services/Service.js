@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/'
+const url = 'http://localhost:3001/cadav/'
 
 export const getCadavData = (name) => {
   console.log('using getCadavData service')
